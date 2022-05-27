@@ -25,11 +25,16 @@ const Tour = createStore({
         }
     },
     actions: {
-
+        CREATE_TOUR(context, data) {
+            context.commit('setTourData', data);
+        }
     },
     getters: {
         getDates(state) {
             return state.tour.dates;
+        },
+        getTourData(state) {
+            return state.tour;
         }
     }
 });

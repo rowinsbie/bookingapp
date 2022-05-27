@@ -20073,9 +20073,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     AddDate: function AddDate() {
-      console.log(this.DateFormat(this.picked));
-      console.log(this.getDateList);
-
       if (this.getDateList.includes(this.DateFormat(this.picked))) {
         this.$toast.error("The date you've selected is already on the list", {
           position: "bottom"
@@ -20112,12 +20109,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _AddDateForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddDateForm.vue */ "./resources/js/components/forms/AddDateForm.vue");
+/* harmony import */ var _state_Tour__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../state/Tour */ "./resources/js/state/Tour.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AddDateFormVue: _AddDateForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {}
+  data: function data() {
+    return {
+      Tour: {
+        name: '',
+        itinerary: ''
+      }
+    };
+  },
+  methods: {
+    createTour: function createTour() {
+      _state_Tour__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('CREATE_TOUR', {
+        name: this.Tour.name,
+        itinerary: this.Tour.itinerary,
+        dates: _state_Tour__WEBPACK_IMPORTED_MODULE_1__["default"].getters.getDates
+      });
+      console.log(this.getTourInformation);
+    }
+  },
+  mounted: function mounted() {},
+  computed: {
+    getTourInformation: function getTourInformation() {
+      return _state_Tour__WEBPACK_IMPORTED_MODULE_1__["default"].getters.getTourData;
+    }
+  }
 });
 
 /***/ }),
@@ -20440,58 +20462,118 @@ var _hoisted_3 = {
   "class": "card-body"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div class=\"col-lg-6\"><h3>Create Tour</h3></div></div><hr><div class=\"row\"><div class=\"col-lg-12\"><div class=\"form-group\"><label for=\"tourName\">Tour Name</label><input type=\"text\" class=\"form-control\" id=\"tour-name\" name=\"tour-name\"></div><div class=\"form-group\"><label for=\"itinerary\">Itenerary</label><textarea name=\"itinerary\" id=\"itenerary\" class=\"form-control\" cols=\"30\" rows=\"5\"></textarea></div></div></div><hr>", 4);
-
-var _hoisted_8 = {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "row"
-};
-var _hoisted_9 = {
-  "class": "col-lg-12"
-};
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Tour Dates Available", -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-lg-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Create Tour")])], -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
-  "class": "mt-2"
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "row"
 };
+var _hoisted_7 = {
+  "class": "col-lg-12"
+};
+var _hoisted_8 = {
+  "class": "form-group"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "tourName"
+}, "Tour Name", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form-group"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "itinerary"
+}, "Itenerary", -1
+/* HOISTED */
+);
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
 );
 
 var _hoisted_13 = {
-  "class": "row mt-4"
+  "class": "row"
 };
 var _hoisted_14 = {
+  "class": "col-lg-12"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Tour Dates Available", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
+  "class": "mt-2"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  "class": "row mt-4"
+};
+var _hoisted_19 = {
   "class": "col-lg-12 text-end"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Cancel");
-
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-primary"
-}, "Submit", -1
-/* HOISTED */
-);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Cancel");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_AddDateFormVue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AddDateFormVue");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddDateFormVue)])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-control",
+    id: "tour-name",
+    name: "tour-name",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.Tour.name = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Tour.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    name: "itinerary",
+    id: "itenerary",
+    "class": "form-control",
+    cols: "30",
+    rows: "5",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.Tour.itinerary = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Tour.itinerary]])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddDateFormVue)])])]), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/tour-list",
     "class": "btn border mr-2"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_15];
+      return [_hoisted_20];
     }),
     _: 1
     /* STABLE */
 
-  }), _hoisted_16])])])])]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.createTour();
+    }),
+    "class": "btn btn-primary"
+  }, "Submit")])])])])]);
 }
 
 /***/ }),
@@ -20693,10 +20775,17 @@ var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
       }
     }
   },
-  actions: {},
+  actions: {
+    CREATE_TOUR: function CREATE_TOUR(context, data) {
+      context.commit('setTourData', data);
+    }
+  },
   getters: {
     getDates: function getDates(state) {
       return state.tour.dates;
+    },
+    getTourData: function getTourData(state) {
+      return state.tour;
     }
   }
 });

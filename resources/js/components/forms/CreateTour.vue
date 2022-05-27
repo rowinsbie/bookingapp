@@ -17,6 +17,7 @@
                                 class="form-control"
                                 id="tour-name"
                                 name="tour-name"
+                                v-model="Tour.name"
                             />
                         </div>
                         <div class="form-group">
@@ -27,6 +28,8 @@
                                 class="form-control"
                                 cols="30"
                                 rows="5"
+                                v-model="Tour.itinerary"
+
                             ></textarea>
                         </div>
                     </div>
@@ -46,7 +49,7 @@
                         <router-link to="/tour-list" class="btn border mr-2"
                             >Cancel</router-link
                         >
-                        <button class="btn btn-primary ">Submit</button>
+                        <button v-on:click="createTour()" class="btn btn-primary ">Submit</button>
                     </div>
                 </div>
             </div>
@@ -55,11 +58,39 @@
 </template>
 <script>
 import AddDateFormVue from "./AddDateForm.vue";
+import Tour from "../../state/Tour";
 export default {
     components: {
         AddDateFormVue,
     },
+    data()
+    {
+        return {
+             Tour:{
+              name:'',
+              itinerary:''
+            }
+        }
+    },
+    methods:{
+        createTour()
+        {
+            Tour.dispatch('CREATE_TOUR',{
+                name:this.Tour.name,
+                itinerary:this.Tour.itinerary,
+                dates:Tour.getters.getDates
+            });
+
+            console.log(this.getTourInformation);
+        }
+    },
     mounted() {},
+    computed:{
+        getTourInformation()
+        {
+            return Tour.getters.getTourData;
+        }
+    }
 };
 </script>
 <style></style>
