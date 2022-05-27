@@ -5,4 +5,7 @@ import App from './components/App';
 import Toaster from '@meforma/vue-toaster';
 
 
-createApp(App).use(router).use(Toaster).mount("#app");
+createApp(App)
+    .use(router)
+    .use(Toaster)
+    .mount("#app");

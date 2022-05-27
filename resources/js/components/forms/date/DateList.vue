@@ -8,7 +8,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(date,index) in dates" :key="index">
-                        <td>{{formatDate(date)}}</td>
+                        <td>{{DateFormat(date)}}</td>
                         <td>
                             <button class="btn btn-danger" v-on:click="Remove(index)">Remove</button>
                         </td>
@@ -17,16 +17,13 @@
           </table>
 </template>
 <script>
-import moment from 'moment';
+import DateFormat from '../../../mixin/DateFormat';
 import Tour from './../../../state/Tour';
 export default {
     props:['dates'],
-  
+    mixins:[DateFormat],
     methods:{
-        formatDate(data)
-        {
-            return moment(data).format('MM/DD/YYYY');
-        },
+       
         Remove(index)
         {
             Tour.commit('removeDate',index);

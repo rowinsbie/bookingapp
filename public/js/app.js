@@ -20054,40 +20054,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _date_DateList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./date/DateList.vue */ "./resources/js/components/forms/date/DateList.vue");
-/* harmony import */ var vue3_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue3-datepicker */ "./node_modules/vue3-datepicker/dist/vue3-datepicker.esm.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _state_Tour__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../state/Tour */ "./resources/js/state/Tour.js");
+/* harmony import */ var _mixin_DateFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixin/DateFormat */ "./resources/js/mixin/DateFormat.js");
+/* harmony import */ var _date_DateList_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./date/DateList.vue */ "./resources/js/components/forms/date/DateList.vue");
+/* harmony import */ var vue3_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue3-datepicker */ "./node_modules/vue3-datepicker/dist/vue3-datepicker.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _state_Tour__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../state/Tour */ "./resources/js/state/Tour.js");
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_mixin_DateFormat__WEBPACK_IMPORTED_MODULE_0__["default"]],
   data: function data() {
     return {
-      picked: (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(new Date())
+      picked: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(new Date())
     };
   },
   methods: {
     AddDate: function AddDate() {
-      if (this.getDateList.indexOf(this.picked) !== -1) {
+      console.log(this.DateFormat(this.picked));
+      console.log(this.getDateList);
+
+      if (this.getDateList.includes(this.DateFormat(this.picked))) {
         this.$toast.error("The date you've selected is already on the list", {
           position: "bottom"
         });
         return false;
       }
 
-      _state_Tour__WEBPACK_IMPORTED_MODULE_3__["default"].commit("setAvailableDates", this.picked);
+      _state_Tour__WEBPACK_IMPORTED_MODULE_4__["default"].commit("setAvailableDates", this.DateFormat(this.picked));
     }
   },
   components: {
-    Datepicker: vue3_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"],
-    DateList: _date_DateList_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Datepicker: vue3_datepicker__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DateList: _date_DateList_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   mounted: function mounted() {},
   computed: {
     getDateList: function getDateList() {
-      return _state_Tour__WEBPACK_IMPORTED_MODULE_3__["default"].getters.getDates;
+      return _state_Tour__WEBPACK_IMPORTED_MODULE_4__["default"].getters.getDates;
     }
   }
 });
@@ -20127,17 +20133,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mixin_DateFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixin/DateFormat */ "./resources/js/mixin/DateFormat.js");
 /* harmony import */ var _state_Tour__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../state/Tour */ "./resources/js/state/Tour.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dates'],
+  mixins: [_mixin_DateFormat__WEBPACK_IMPORTED_MODULE_0__["default"]],
   methods: {
-    formatDate: function formatDate(data) {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()(data).format('MM/DD/YYYY');
-    },
     Remove: function Remove(index) {
       _state_Tour__WEBPACK_IMPORTED_MODULE_1__["default"].commit('removeDate', index);
     }
@@ -20519,7 +20522,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.dates, function (date, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate(date)), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.DateFormat(date)), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": "btn btn-danger",
@@ -20586,6 +20589,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/mixin/DateFormat.js":
+/*!******************************************!*\
+  !*** ./resources/js/mixin/DateFormat.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    DateFormat: function DateFormat(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('MM/DD/YYYY');
+    }
+  }
+});
 
 /***/ }),
 

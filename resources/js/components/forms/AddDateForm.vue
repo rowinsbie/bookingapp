@@ -32,12 +32,13 @@
 </div>
 </template>
 <script>
-
+import DateFormat from '../../mixin/DateFormat';
 import DateList from './date/DateList.vue';
 import Datepicker from "vue3-datepicker";
 import { ref } from "vue";
 import Tour from "./../../state/Tour";
 export default {
+  mixins:[DateFormat],
   data() {
     return {
       picked: ref(new Date()),
@@ -45,14 +46,16 @@ export default {
   },
   methods: {
     AddDate() {
-      if(this.getDateList.indexOf(this.picked) !== -1)
+            console.log(this.DateFormat(this.picked));
+            console.log(this.getDateList);
+      if(this.getDateList.includes(this.DateFormat(this.picked)))
       {
           this.$toast.error("The date you've selected is already on the list",{
               position:"bottom"
           });
-          return false;
+         return false;
       }
-      Tour.commit("setAvailableDates", this.picked);
+      Tour.commit("setAvailableDates", this.DateFormat(this.picked));
     },
   },
   components: {
