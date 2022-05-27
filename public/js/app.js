@@ -20750,9 +20750,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 
-var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
+
+var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
   state: function state() {
     return {
       tour: {
@@ -20778,6 +20781,11 @@ var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
   actions: {
     CREATE_TOUR: function CREATE_TOUR(context, data) {
       context.commit('setTourData', data);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/test', data).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   },
   getters: {

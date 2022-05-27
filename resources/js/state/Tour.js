@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createStore } from "vuex";
 
 const Tour = createStore({
@@ -27,6 +28,12 @@ const Tour = createStore({
     actions: {
         CREATE_TOUR(context, data) {
             context.commit('setTourData', data);
+            axios.post('api/test', data)
+                .then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                });
         }
     },
     getters: {
