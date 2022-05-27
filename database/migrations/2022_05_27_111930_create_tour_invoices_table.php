@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('tour_invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreign('booking_id')->references('id').on('tour_bookings').onDelete('cascade');
+            $table->unsignedBigInteger('booking_id');
+            $table->foreign('booking_id')->references('id')->on('tour_bookings');
+            // $table->foreignId('booking_id')->constrained('tour_bookings').onDelete('cascade');
             $table->double('amount');
             $table->integer('status_id');
             $table->timestamps();

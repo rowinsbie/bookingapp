@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
-            $table->string('varchar',256);
-            $table->text('varchar',1000);
+            $table->string('name',256);
+            $table->text('itinerary',1000);
             $table->integer('status_id');
             $table->timestamps();
         });

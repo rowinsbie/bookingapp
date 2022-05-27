@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('tour_booking_passengers', function (Blueprint $table) {
             $table->id();
-            $table->foreign('booking_id')->references('id').on('tour_bookings').onDelete('cascade');
-            $table->foreign('passenger_id')->references('id').on('passengers').onDelete('cascade');
+            $table->unsignedBigInteger('booking_id');
+            $table->unsignedBigInteger('passenger_id');
+            $table->foreign('booking_id')->references('id')->on('tour_bookings');
+            $table->foreign('passenger_id')->references('id')->on('passengers');
+
+            // $table->foreignId('booking_id')->constrained('tour_bookings').onDelete('cascade');
+            // $table->foreignId('passenger_id')->constrained('passengers').onDelete('cascade');
             $table->text('special_request',255);
             $table->timestamps();
         });

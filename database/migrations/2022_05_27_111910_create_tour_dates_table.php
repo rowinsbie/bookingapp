@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('tour_dates', function (Blueprint $table) {
             $table->id();
-            $table->foreign('tour_id')->references('id').on('tours').onDelete('cascade');
+            // $table->foreignId('tour_id')->constrained('tours').onDelete('cascade');
+            $table->unsignedBigInteger('tour_id');
+            $table->foreign('tour_id')->references('id')->on('tours');
+
             $table->date('date');
             $table->integer('status_id');
             $table->timestamps();
