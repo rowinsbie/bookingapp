@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createStore } from "vuex";
-
+import Toaster from "@meforma/vue-toaster";
 const Tour = createStore({
     state() {
         return {
@@ -28,11 +28,12 @@ const Tour = createStore({
     actions: {
         CREATE_TOUR(context, data) {
             context.commit('setTourData', data);
-            axios.post('api/test', data)
+            axios.post('api/create-tour', data)
                 .then(res => {
                     console.log(res);
                 }).catch(err => {
-                    console.log(err);
+                    console.log(err.response);
+
                 });
         }
     },
