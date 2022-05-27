@@ -47,7 +47,9 @@ export default {
     AddDate() {
       if(this.getDateList.indexOf(this.picked) !== -1)
       {
-          alert("already exists");
+          this.$toast.error("The date you've selected is already on the list",{
+              position:"bottom"
+          });
           return false;
       }
       Tour.commit("setAvailableDates", this.picked);
