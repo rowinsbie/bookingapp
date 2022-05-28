@@ -10,9 +10,19 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <tr v-for="(data,index) in datelist" :key="index">
+                                <td>{{data.date}}</td>
+                                <td>{{data.status_id}}</td>
+                                <td>
+                                    <button class="btn btn-primary">Disable</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -21,7 +31,7 @@
 </template>
 <script>
 export default {
-    props:['tourID']
+    props:['tourID','datelist']
 }
 </script>
 <style lang="">

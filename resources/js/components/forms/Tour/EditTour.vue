@@ -13,6 +13,7 @@
                             name="name"
                             id="name"
                             class="form-control"
+                            :value="Tour.name"
                         />
                     </div>
                     <div class="form-group mt-3">
@@ -22,7 +23,7 @@
                             class="form-control"
                             id="itinerary"
                             cols="30"
-                            rows="3"
+                            rows="3" :value="Tour.itinerary"
                         ></textarea>
                     </div>
                     <div class="form-group text-end mt-3">
@@ -31,12 +32,14 @@
                 </form>
             </div>
         </div>
-        <AvailableDates :tourID="this.id" class="mt-3" />
+      
+        <AvailableDates :datelist="Tour.tour_date" :tourID="this.id" class="mt-3" />
     </div>
 </template>
 <script>
 import AvailableDates from '../date/AvailableDates.vue';
 import { useRoute } from "vue-router";
+import EditTour from '../../../state/EditTour';
 export default {
     components:{
         AvailableDates
@@ -47,15 +50,14 @@ export default {
         };
     },
     mounted() {
-        axios
-            .get(`../api/show-tour-details/${this.id}`)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        EditTour.dispatch('GET_TOUR_DATA',this.id);
     },
+    computed:{
+        Tour()
+        {
+            return EditTour.getters.getData;
+        }
+    }
 };
 </script>
 <style lang=""></style>
