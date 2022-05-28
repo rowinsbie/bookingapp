@@ -9,4 +9,9 @@ class TourDate extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Tour()
+    {
+        return $this->belongsTo(Tour::class,'tour_id','id');
+    }
 }

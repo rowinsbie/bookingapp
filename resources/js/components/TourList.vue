@@ -28,7 +28,7 @@
                                         <td>{{data.id}}</td>
                                         <td>{{data.name}}</td>
                                         <td>
-                                            <button class="btn btn-primary">Edit</button>
+                                           <router-link :to="{name:'editTour',params:{id:data.id}}" class="btn btn-primary">Edit</router-link>
                                              <button class="btn border">Bookings</button>
                                         </td>
                                     </tr>

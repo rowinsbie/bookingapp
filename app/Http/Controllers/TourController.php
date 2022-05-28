@@ -30,9 +30,23 @@ class TourController extends Controller
     }
 
 
-
     public function getTourList(Request $request)
     {
         return Tour::all();
     }
+
+    public function showTourDetails($id)
+    {
+        $Tour = Tour::with(['TourDate'])->find($id);
+        if(!$Tour->exists())
+        {
+            abort(404);
+        }
+
+        return Response()->json([
+            'tour'=>$Tour
+        ]);
+       
+    }
+
 }

@@ -10,4 +10,9 @@ class Tour extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function TourDate()
+    {
+        return $this->hasMany(TourDate::class,'tour_id','id');
+    }
 }

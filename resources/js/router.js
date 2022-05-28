@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import BookingList from './components/BookingList';
 import TourList from './components/TourList';
 import createTour from './components/forms/CreateTour';
+import EditTour from './components/forms/Tour/EditTour';
 const routes = [{
         path: '/',
         name: "BookingList",
@@ -17,6 +18,11 @@ const routes = [{
         path: '/create-tour',
         name: 'createTour',
         component: createTour
+    },
+    {
+        path: '/edit-tour/:id',
+        name: 'editTour',
+        component: EditTour
     }
 ];
 
