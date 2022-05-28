@@ -23,6 +23,16 @@
                                     <th>Actions</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    <tr v-for="(data,index) in list" :key="index">
+                                        <td>{{data.id}}</td>
+                                        <td>{{data.name}}</td>
+                                        <td>
+                                            <button class="btn btn-primary">Edit</button>
+                                             <button class="btn border">Bookings</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             
                     </table>
                 </div>
@@ -32,9 +42,25 @@
 </template>
 <script>
 export default {
-  
+    data()
+    {
+        return {
+            list:[]
+        }
+    },
     mounted()
     {
+        axios.get("api/get-tour")
+        .then(res => {
+            console.log(res);
+           if(res && res.data)
+           {
+               this.list = res.data;
+               
+           }
+        }).catch(err => {
+            console.log(err); 
+        });
     }
 }
 </script>

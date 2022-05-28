@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createStore } from "vuex";
 import Toaster from "@meforma/vue-toaster";
+import Swal from "sweetalert2";
+import router from "../router";
 const Tour = createStore({
     state() {
         return {
@@ -30,7 +32,13 @@ const Tour = createStore({
             context.commit('setTourData', data);
             axios.post('api/create-tour', data)
                 .then(res => {
-                    console.log(res);
+                    Swal.fire({
+                        title: "Created!",
+                        text: "A tour has been created",
+                        icon: "success"
+                    }).then(res => {
+                        router.push('/tour-list');
+                    });
                 }).catch(err => {
                     console.log(err.response);
 

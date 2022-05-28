@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('create-tour',[TourController::class,'createTour']);
+Route::get('get-tour',[TourController::class,'getTourList']);

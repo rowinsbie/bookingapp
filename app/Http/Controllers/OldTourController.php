@@ -20,18 +20,19 @@ class TourController extends Controller
         {
             foreach($request['dates'] as $date)
             {
-               
-               
                 TourDate::create([
                     'tour_id'=>$CreateTour->id,
                     'date'=>Date('Y-m-d',strtotime($date)),
                     'status_id'=>1
                 ]);
             }
-        }
-      
+        } 
+    }
 
-        
-         
+
+
+    public function getTourList(Request $request)
+    {
+        return Tour::all();
     }
 }

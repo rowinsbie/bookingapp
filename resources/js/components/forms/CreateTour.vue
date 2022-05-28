@@ -81,7 +81,7 @@ export default {
                 dates:Tour.getters.getDates
             });
 
-            console.log(this.getTourInformation);
+         
         }
     },
     mounted() {},
