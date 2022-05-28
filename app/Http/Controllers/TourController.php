@@ -35,6 +35,11 @@ class TourController extends Controller
         return Tour::all();
     }
 
+    public function Update(Request $request)
+    {
+
+    }
+
     public function showTourDetails($id)
     {
         $Tour = Tour::with(['TourDate'])->find($id);

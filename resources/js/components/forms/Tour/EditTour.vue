@@ -1,5 +1,10 @@
 <template lang="">
     <div class="col-lg-7 offset-md-2 mt-5">
+        <div class="card mb-3">
+            <div class="card-body">
+                <router-link to="/tour-list" class="btn border">Back</router-link>
+            </div>  
+        </div>
         <div class="card">
             <div class="card-body">
                 <div>
