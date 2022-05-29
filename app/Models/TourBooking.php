@@ -9,4 +9,14 @@ class TourBooking extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Tour()
+    {
+        return $this->belongsTo(Tour::class,'tour_id','id');
+    }
+
+    public function PassengerBooking()
+    {
+        return $this->hasMany(TourBookingPassenger::class,'booking_id','id');
+    }
 }

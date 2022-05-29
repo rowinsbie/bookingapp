@@ -20309,12 +20309,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      id: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRoute)().params.id,
-      date: ''
+      Passenger: {
+        tourID: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRoute)().params.id,
+        date: null
+      }
     };
   },
   mounted: function mounted() {
-    _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('GET_DATES', this.id);
+    _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("GET_DATES", this.Passenger.tourID);
+  },
+  methods: {
+    AddPassengers: function AddPassengers() {
+      _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("ADD_PASSENGER", {
+        data: this.Passenger
+      }); // this.showPassengers();
+    },
+    showPassengers: function showPassengers() {
+      _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("SHOW_PASSENGERS", {
+        tourID: this.Passenger.tourID,
+        date: this.Passenger.date
+      });
+    }
   },
   computed: {
     showDates: function showDates() {
@@ -20336,7 +20351,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony import */ var _state_Booking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../state/Booking */ "./resources/js/state/Booking.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {},
+  computed: {
+    PassengersList: function PassengersList() {
+      return _state_Booking__WEBPACK_IMPORTED_MODULE_0__["default"].getters.getPassengers;
+    }
+  }
+});
 
 /***/ }),
 
@@ -21011,7 +21035,7 @@ var _hoisted_4 = {
   "class": "card-body"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Passenger's Booking", -1
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Passenger's Booking ", -1
 /* HOISTED */
 );
 
@@ -21029,11 +21053,12 @@ var _hoisted_8 = {
 var _hoisted_9 = {
   "class": "form-group"
 };
-var _hoisted_10 = {
-  name: "date",
-  id: "date",
-  "class": "form-control"
-};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "dates"
+}, "Available Dates", -1
+/* HOISTED */
+);
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: ""
@@ -21042,52 +21067,85 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_12 = {
-  value: "{{date.date}}"
-};
-var _hoisted_13 = {
   "class": "mt-3"
 };
+var _hoisted_13 = {
+  "class": "form-group mt-3"
+};
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form-group mt-3\"><label for=\"firstName\">First Name</label><input type=\"text\" id=\"fname\" name=\"fname\" class=\"form-control\"></div><div class=\"form-group mt-3\"><label for=\"lastName\">Last Name</label><input type=\"text\" id=\"lname\" name=\"lname\" class=\"form-control\"></div><div class=\"form-group mt-3\"><label for=\"email\">Email</label><input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\"></div><div class=\"form-group mt-3\"><label for=\"mobile\">Mobile</label><input type=\"text\" id=\"mobile\" name=\"mobile\" class=\"form-control\"></div><div class=\"form-group mt-3\"><label for=\"passport\">Passport</label><input type=\"text\" id=\"passport\" name=\"passport\" class=\"form-control\"></div>", 5);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "firstName"
+}, "First Name", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "form-group mt-3"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "lastName"
+}, "Last Name", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "form-group mt-3"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "email"
+}, "Email", -1
+/* HOISTED */
+);
 
 var _hoisted_19 = {
   "class": "form-group mt-3"
 };
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "mobile"
+}, "Mobile", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "form-group mt-3"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "passport"
+}, "Passport", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  "class": "form-group mt-3"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "datebirth"
 }, "Date of Birth", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_25 = {
   "class": "form-group mt-3"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "specreq"
-}, "Special Request"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
-  name: "specreq",
-  id: "specreq",
-  cols: "30",
-  rows: "4",
-  "class": "form-control"
-})], -1
+}, "Special Request", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = {
+var _hoisted_27 = {
   "class": "form-group mt-3 text-center"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Cancel");
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Cancel");
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "button",
-  "class": "btn btn-primary"
-}, "Add Passenger", -1
-/* HOISTED */
-);
-
-var _hoisted_25 = {
+var _hoisted_29 = {
   "class": "col-lg-8 mt-5"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21097,31 +21155,110 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_PassengersList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PassengersList");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_10, [_hoisted_11, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.showDates, function (date, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date.date), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    onChange: _cache[0] || (_cache[0] = function ($event) {
+      return $options.showPassengers();
+    }),
+    name: "date",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.Passenger.date = $event;
+    }),
+    id: "date",
+    "class": "form-control"
+  }, [_hoisted_11, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.showDates, function (date, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date.date), 1
     /* TEXT */
     );
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
-    modelValue: $data.date,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.date = $event;
+  ))], 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.Passenger.date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "fname",
+    name: "fname",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.Passenger.given_name = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.given_name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "lname",
+    name: "lname",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.Passenger.surname = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.surname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "email",
+    name: "email",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.Passenger.email = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "mobile",
+    name: "mobile",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.Passenger.mobile = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.mobile]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "passport",
+    name: "passport",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return $data.Passenger.passport = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.passport]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: $data.Passenger.birthDate,
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $data.Passenger.birthDate = $event;
     }),
     format: $setup.format
   }, null, 8
   /* PROPS */
-  , ["modelValue", "format"])]), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  , ["modelValue", "format"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    name: "specreq",
+    id: "specreq",
+    cols: "30",
+    rows: "4",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+      return $data.Passenger.Request = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.Passenger.Request]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/tour-list",
     "class": "btn border m-2"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_23];
+      return [_hoisted_28];
     }),
     _: 1
     /* STABLE */
 
-  }), _hoisted_24])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PassengersList)])]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[9] || (_cache[9] = function ($event) {
+      return $options.AddPassengers();
+    }),
+    "class": "btn btn-primary"
+  }, " Add Passenger ")])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PassengersList)])]);
 }
 
 /***/ }),
@@ -21142,12 +21279,80 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "card"
 };
+var _hoisted_2 = {
+  "class": "card-body"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-body\"><h4>Passenger&#39;s List</h4><h6>Tour Name</h6><hr><div class=\"table-responsive\"><table class=\"table table-striped\"><thead><tr><th>Name</th><th>Email</th><th>Mobile</th><th>Passport</th><th>Date of Birth</th></tr></thead></table></div></div>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Passenger's List ", -1
+/* HOISTED */
+);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Tour Name", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  key: 0
+};
+var _hoisted_7 = {
+  "class": "table-responsive"
+};
+var _hoisted_8 = {
+  "class": "table table-striped"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Email"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Mobile"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Passport"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Date of Birth")])], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = [":key"];
+var _hoisted_11 = {
+  key: 1,
+  "class": "text-center"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/images/addfile.png",
+  alt: "Add file",
+  "class": "img-responsive img-fluid",
+  width: "400"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Hey there!", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "To view passengers, Please select a date in the tour available dates", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = [_hoisted_12, _hoisted_13, _hoisted_14];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, _hoisted_5, $options.PassengersList.length >= 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.PassengersList, function (data, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      ":key": index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.given_name) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.surname), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.email), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.mobile), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.passport), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.birthDate), 1
+    /* TEXT */
+    )], 8
+    /* PROPS */
+    , _hoisted_10);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, _hoisted_15))])]);
 }
 
 /***/ }),
@@ -21420,19 +21625,43 @@ var Booking = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
   state: function state() {
     return {
       availableDates: [],
-      passenger: {}
+      passengers: []
     };
   },
   mutations: {
     setPassenger: function setPassenger(state, data) {
-      state.passenger = data;
+      state.passengers.push(data);
+    },
+    setPassengerList: function setPassengerList(state, data) {
+      state.passengers = data;
     },
     setAvailableDates: function setAvailableDates(state, dates) {
       state.availableDates = dates;
     }
   },
   actions: {
-    ADD_PASSENGER: function ADD_PASSENGER(context, data) {},
+    ADD_PASSENGER: function ADD_PASSENGER(context, data) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('../api/book-passenger', data).then(function (res) {
+        if (res && res.status == 200) {
+          context.commit('setPassenger', res.data);
+        }
+      })["catch"](function (err) {
+        return Promise.reject(err);
+      });
+    },
+    SHOW_PASSENGERS: function SHOW_PASSENGERS(context, data) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("../api/show-passengers/", {
+        date: data.date,
+        tourID: data.tourID
+      }).then(function (res) {
+        if (res && res.data) {
+          console.log(res.data);
+          context.commit('setPassengerList', res.data);
+        }
+      })["catch"](function (err) {
+        return Promise.reject(err);
+      });
+    },
     GET_DATES: function GET_DATES(context, id) {
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("../api/get-dates/".concat(id)).then(function (res) {
         if (res && res.data) {
@@ -21446,6 +21675,9 @@ var Booking = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
   getters: {
     getDates: function getDates(state) {
       return state.availableDates;
+    },
+    getPassengers: function getPassengers(state) {
+      return state.passengers;
     }
   }
 });

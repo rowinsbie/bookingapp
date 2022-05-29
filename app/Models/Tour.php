@@ -20,4 +20,9 @@ class Tour extends Model
     {
         return $this->belongsTo(TourStatus::class,'status_id','id');
     }
+
+    public function Booking()
+    {
+        return $this->hasMany(TourBooking::class,'tour_id','id');
+    }
 }
