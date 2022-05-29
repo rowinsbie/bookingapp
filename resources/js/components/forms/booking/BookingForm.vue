@@ -11,6 +11,7 @@
                          <div class="form-group">
                             <select name="date" id="date" class="form-control">
                                 <option value="">Select Date</option>
+                                <option v-for="(date,index) in showDates" value="{{date.date}}">{{date.date}}</option>
                             </select>
                         </div>
                        
@@ -37,7 +38,7 @@
                             </div>
                              <div class="form-group mt-3">
                                     <label for="datebirth">Date of Birth</label>
-                                    <input type="text" id="dob" name="dob" class="form-control">
+                    <datepicker  id="dob" name="dob" class="form-control" />
                             </div>
                             <div class="form-group mt-3">
                                     <label for="specreq">Special Request</label>
@@ -61,9 +62,31 @@
 </template>
 <script>
 import PassengersList from './PassengersList.vue';
+import Booking from '../../../state/Booking';
+import { useRoute } from "vue-router";
+import Datepicker from "vue3-datepicker";
+import { ref } from "vue";
+
 export default {
     components:{
-        PassengersList
+        PassengersList,
+        Datepicker
+    },
+    data()
+    {
+        return {
+            id:useRoute().params.id
+        }
+    },  
+    mounted()
+    {
+        Booking.dispatch('GET_DATES',this.id);
+    },
+    computed:{
+        showDates()
+        {
+            return Booking.getters.getDates;
+        }
     }
 };
 </script>

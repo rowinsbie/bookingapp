@@ -29,7 +29,7 @@
                                         <td>{{data.name}}</td>
                                         <td>
                                            <router-link :to="{name:'editTour',params:{id:data.id}}" class="btn btn-primary">Edit</router-link>
-                                             <button class="btn border">Bookings</button>
+                                           <router-link :to="{name:'booking',params:{id:data.id}}" class="btn border m-2">Booking</router-link>
                                         </td>
                                     </tr>
                                 </tbody>
