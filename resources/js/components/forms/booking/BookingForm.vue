@@ -38,7 +38,7 @@
                             </div>
                              <div class="form-group mt-3">
                                     <label for="datebirth">Date of Birth</label>
-                    <datepicker  id="dob" name="dob" class="form-control" />
+    <Datepicker v-model="date" :format="format" ></Datepicker>
                             </div>
                             <div class="form-group mt-3">
                                     <label for="specreq">Special Request</label>
@@ -64,18 +64,38 @@
 import PassengersList from './PassengersList.vue';
 import Booking from '../../../state/Booking';
 import { useRoute } from "vue-router";
-import Datepicker from "vue3-datepicker";
-import { ref } from "vue";
+ import Datepicker from '@vuepic/vue-datepicker';
+    import '@vuepic/vue-datepicker/dist/main.css'
+import { ref } from '@vue/reactivity';
 
 export default {
     components:{
         PassengersList,
         Datepicker
     },
+    setup()
+    {
+            const date = ref(new Date());
+
+            const format = (date) => {
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+
+            return {
+  date,
+            format
+            }
+          
+    },
     data()
     {
         return {
-            id:useRoute().params.id
+            id:useRoute().params.id,
+            date:''
         }
     },  
     mounted()
