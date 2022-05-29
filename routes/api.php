@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('create-tour',[TourController::class,'createTour']);
 Route::get('get-tour',[TourController::class,'getTourList']);
 Route::get('show-tour-details/{id}',[TourController::class,'showTourDetails']);
+Route::post('booking-date-status-update',[TourController::class,'UpdateDateStatus']);
+Route::post('update-tour',[TourController::class,'UpdateTourInformation']);

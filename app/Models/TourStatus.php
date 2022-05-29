@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TourStatus extends Model
 {
     use HasFactory;
+
+    public function Tour()
+    {
+        return $this->hasMany(Tour::class,'status_id','id');
+    }
 }

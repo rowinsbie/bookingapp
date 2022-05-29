@@ -20186,6 +20186,23 @@ __webpack_require__.r(__webpack_exports__);
       id: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)().params.id
     };
   },
+  methods: {
+    UpdateTourInfo: function UpdateTourInfo() {
+      var _this = this;
+
+      axios.post('../api/update-tour', this.Tour).then(function (res) {
+        if (res && res.status == 200) {
+          _this.$toast.success("Tour Information has been updated", {
+            position: "bottom"
+          });
+
+          _state_EditTour__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('GET_TOUR_DATA', _this.id);
+        }
+      })["catch"](function (err) {
+        return Promise.reject(err);
+      });
+    }
+  },
   mounted: function mounted() {
     _state_EditTour__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('GET_TOUR_DATA', this.id);
   },
@@ -20209,8 +20226,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _state_EditTour__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../state/EditTour */ "./resources/js/state/EditTour.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['tourID', 'datelist']
+  props: ['tourID', 'datelist'],
+  methods: {
+    toggleStatus: function toggleStatus(id, status_id) {
+      var _this = this;
+
+      axios.post('../api/booking-date-status-update', {
+        current_status: status_id,
+        id: id
+      }).then(function (res) {
+        if (res && res.status == 200) {
+          _state_EditTour__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch('GET_TOUR_DATA', _this.tourID);
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -20737,27 +20772,19 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = ["value"];
-var _hoisted_12 = {
+var _hoisted_11 = {
   "class": "form-group mt-3"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "name"
 }, "Itinerary", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = ["value"];
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = {
   "class": "form-group text-end mt-3"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-primary"
-}, "Update")], -1
-/* HOISTED */
-);
-
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -20773,24 +20800,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "name",
     id: "name",
     "class": "form-control",
-    value: $options.Tour.name
-  }, null, 8
-  /* PROPS */
-  , _hoisted_11)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $options.Tour.name = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.Tour.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     name: "itinerary",
     "class": "form-control",
     id: "itinerary",
     cols: "30",
     rows: "3",
-    value: $options.Tour.itinerary
-  }, null, 8
-  /* PROPS */
-  , _hoisted_14)]), _hoisted_15])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AvailableDates, {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $options.Tour.itinerary = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.Tour.itinerary]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    id: "id",
+    name: "id",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $options.Tour.id = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.Tour.id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return $options.UpdateTourInfo();
+    }),
+    "class": "btn btn-primary"
+  }, "Update")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AvailableDates, {
     datelist: $options.Tour.tour_date,
     tourID: this.id,
     "class": "mt-3"
@@ -20836,21 +20882,33 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-primary"
-}, "Disable")], -1
-/* HOISTED */
-);
-
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.datelist, function (data, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: index
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.date), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.status_id), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.tour_date_status.status), 1
     /* TEXT */
-    ), _hoisted_7]);
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [data.status_id == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: 0,
+      "class": "btn btn-danger",
+      onClick: function onClick($event) {
+        return $options.toggleStatus(data.id, data.status_id);
+      }
+    }, "Disable", 8
+    /* PROPS */
+    , _hoisted_7)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: 1,
+      "class": "btn btn-success",
+      onClick: function onClick($event) {
+        return $options.toggleStatus(data.id, data.status_id);
+      }
+    }, "Enable", 8
+    /* PROPS */
+    , _hoisted_8))])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])])])]);

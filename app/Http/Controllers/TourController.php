@@ -14,7 +14,7 @@ class TourController extends Controller
         $CreateTour = Tour::create([
             'name'=>$request['name'],
             'itinerary'=>$request['itinerary'],
-            'status_id'=>1
+            'status_id'=>2
         ]);
         if($CreateTour)
         {
@@ -35,14 +35,34 @@ class TourController extends Controller
         return Tour::all();
     }
 
-    public function Update(Request $request)
+    public function UpdateDateStatus(Request $request)
     {
+        $status = 1;
+        if($request['current_status'] == 1)
+        {
+            $status = 2;
+        }
 
+        $isUpdated = TourDate::find($request['id'])
+        ->update([
+            'status_id'=>$status
+        ]);
+
+    }
+
+
+    public function UpdateTourInformation(Request $request)
+    {
+        $isUpdated = Tour::find($request['id'])
+        ->update([
+            'name'=>$request['name'],
+            'itinerary'=>$request['itinerary']
+        ]);
     }
 
     public function showTourDetails($id)
     {
-        $Tour = Tour::with(['TourDate'])->find($id);
+        $Tour = Tour::with(['TourDate.TourDateStatus'])->find($id);
         if(!$Tour->exists())
         {
             abort(404);

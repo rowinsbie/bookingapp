@@ -14,4 +14,9 @@ class TourDate extends Model
     {
         return $this->belongsTo(Tour::class,'tour_id','id');
     }
+
+    public function TourDateStatus()
+    {
+        return $this->belongsTo(TourDateStatus::class,'status_id','id');
+    }
 }

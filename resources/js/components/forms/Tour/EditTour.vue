@@ -18,7 +18,8 @@
                             name="name"
                             id="name"
                             class="form-control"
-                            :value="Tour.name"
+                            v-model="Tour.name"
+
                         />
                     </div>
                     <div class="form-group mt-3">
@@ -28,11 +29,12 @@
                             class="form-control"
                             id="itinerary"
                             cols="30"
-                            rows="3" :value="Tour.itinerary"
+                            rows="3" v-model="Tour.itinerary"
                         ></textarea>
                     </div>
                     <div class="form-group text-end mt-3">
-                        <button class="btn btn-primary">Update</button>
+                        <input type="hidden" id="id" name="id" v-model="Tour.id">
+                        <button type="button" v-on:click="UpdateTourInfo()" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -52,10 +54,31 @@ export default {
     data() {
         return {
             id: useRoute().params.id,
+          
         };
+    },
+    methods:{
+        UpdateTourInfo()
+        {
+            axios.post('../api/update-tour',this.Tour)
+            .then(res => {
+                if(res && res.status == 200)
+                {
+                    this.$toast.success("Tour Information has been updated",{
+                        position:"bottom"
+                    });
+                     EditTour.dispatch('GET_TOUR_DATA',this.id);
+                }
+            }).catch(err => {
+                return Promise.reject(err);
+            });
+
+          
+        }
     },
     mounted() {
         EditTour.dispatch('GET_TOUR_DATA',this.id);
+  
     },
     computed:{
         Tour()
