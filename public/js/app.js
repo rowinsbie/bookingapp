@@ -20242,7 +20242,7 @@ __webpack_require__.r(__webpack_exports__);
           _state_EditTour__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch('GET_TOUR_DATA', _this.tourID);
         }
       })["catch"](function (err) {
-        console.log(err);
+        return Promise.reject(err);
       });
     }
   }
@@ -21127,7 +21127,7 @@ var EditTour = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
           context.commit('setTourData', res.data.tour);
         }
       })["catch"](function (err) {
-        console.log(err);
+        return Promise.reject(err);
       });
     }
   },
@@ -21199,7 +21199,7 @@ var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
           _router__WEBPACK_IMPORTED_MODULE_3__["default"].push('/tour-list');
         });
       })["catch"](function (err) {
-        console.log(err.response);
+        return Promise.reject(err);
       });
     }
   },

@@ -40,7 +40,8 @@ const Tour = createStore({
                         router.push('/tour-list');
                     });
                 }).catch(err => {
-                    console.log(err.response);
+                    return Promise.reject(err);
+
 
                 });
         }

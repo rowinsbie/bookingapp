@@ -47,7 +47,8 @@ export default {
                    EditTour.dispatch('GET_TOUR_DATA',this.tourID);
                }
            }).catch(err => {
-               console.log(err);
+                              return Promise.reject(err);
+
            });
         }
     }
