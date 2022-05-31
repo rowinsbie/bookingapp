@@ -23894,7 +23894,14 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Booking");
+var _hoisted_12 = {
+  key: 0
+};
+var _hoisted_13 = {
+  key: 1
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Booking");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -23918,9 +23925,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.date), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.tour.booking[index].passenger_booking.length), 1
+    ), value.tour.booking[index] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.tour.booking[index].passenger_booking.length), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name:'editTour',params:{id:value.tour.id}}\" class=\"btn btn-primary\">Edit</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_13, " 0")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name:'editTour',params:{id:value.tour.id}}\" class=\"btn btn-primary\">Edit</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: 'booking',
         params: {
@@ -23930,7 +23937,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "btn border m-2"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_12];
+        return [_hoisted_14];
       }),
       _: 2
       /* DYNAMIC */
@@ -25359,6 +25366,16 @@ var Booking = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
           context.commit('setAvailableDates', res.data);
         }
       })["catch"](function (err) {
+        if (err && err.response && err.response.status == 404) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+            title: "No dates available",
+            text: "All the dates on this tour are disabled",
+            icon: "warning"
+          }).then(function (result) {
+            _router__WEBPACK_IMPORTED_MODULE_2__["default"].push('/tour-list');
+          });
+        }
+
         return Promise.reject(err);
       });
     }
@@ -25491,6 +25508,14 @@ var Tour = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
           _router__WEBPACK_IMPORTED_MODULE_3__["default"].push('/tour-list');
         });
       })["catch"](function (err) {
+        if (err && err.response && err.response.status == 422) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+            title: "Attention",
+            text: "Please complete the form",
+            icon: "warning"
+          });
+        }
+
         return Promise.reject(err);
       });
     }
@@ -77487,7 +77512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Toaster_vue_vue_type_template_id_04d22544__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Toaster.vue?vue&type=template&id=04d22544 */ "./node_modules/@meforma/vue-toaster/src/Toaster.vue?vue&type=template&id=04d22544");
 /* harmony import */ var _Toaster_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Toaster.vue?vue&type=script&lang=js */ "./node_modules/@meforma/vue-toaster/src/Toaster.vue?vue&type=script&lang=js");
 /* harmony import */ var _Toaster_vue_vue_type_style_index_0_id_04d22544_lang_stylus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Toaster.vue?vue&type=style&index=0&id=04d22544&lang=stylus */ "./node_modules/@meforma/vue-toaster/src/Toaster.vue?vue&type=style&index=0&id=04d22544&lang=stylus");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -77495,7 +77520,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Toaster_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Toaster_vue_vue_type_template_id_04d22544__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"node_modules/@meforma/vue-toaster/src/Toaster.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Toaster_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Toaster_vue_vue_type_template_id_04d22544__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"node_modules/@meforma/vue-toaster/src/Toaster.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77715,13 +77740,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _App_vue_vue_type_template_id_332fccf4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=332fccf4 */ "./resources/js/components/App.vue?vue&type=template&id=332fccf4");
 /* harmony import */ var _App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js */ "./resources/js/components/App.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_332fccf4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/App.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_332fccf4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/App.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77743,13 +77768,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _BookingList_vue_vue_type_template_id_326fa008__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingList.vue?vue&type=template&id=326fa008 */ "./resources/js/components/BookingList.vue?vue&type=template&id=326fa008");
 /* harmony import */ var _BookingList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingList.vue?vue&type=script&lang=js */ "./resources/js/components/BookingList.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingList_vue_vue_type_template_id_326fa008__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/BookingList.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingList_vue_vue_type_template_id_326fa008__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/BookingList.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77771,13 +77796,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _TourList_vue_vue_type_template_id_25f13d81__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourList.vue?vue&type=template&id=25f13d81 */ "./resources/js/components/TourList.vue?vue&type=template&id=25f13d81");
 /* harmony import */ var _TourList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TourList.vue?vue&type=script&lang=js */ "./resources/js/components/TourList.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TourList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TourList_vue_vue_type_template_id_25f13d81__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/TourList.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TourList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TourList_vue_vue_type_template_id_25f13d81__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/TourList.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77799,13 +77824,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddDateForm_vue_vue_type_template_id_54de19d0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddDateForm.vue?vue&type=template&id=54de19d0 */ "./resources/js/components/forms/AddDateForm.vue?vue&type=template&id=54de19d0");
 /* harmony import */ var _AddDateForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddDateForm.vue?vue&type=script&lang=js */ "./resources/js/components/forms/AddDateForm.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddDateForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddDateForm_vue_vue_type_template_id_54de19d0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/AddDateForm.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddDateForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddDateForm_vue_vue_type_template_id_54de19d0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/AddDateForm.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77827,13 +77852,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CreateTour_vue_vue_type_template_id_2cfa23bf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateTour.vue?vue&type=template&id=2cfa23bf */ "./resources/js/components/forms/CreateTour.vue?vue&type=template&id=2cfa23bf");
 /* harmony import */ var _CreateTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateTour.vue?vue&type=script&lang=js */ "./resources/js/components/forms/CreateTour.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateTour_vue_vue_type_template_id_2cfa23bf__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/CreateTour.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateTour_vue_vue_type_template_id_2cfa23bf__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/CreateTour.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77855,13 +77880,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _EditTour_vue_vue_type_template_id_5ded18fe_lang_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditTour.vue?vue&type=template&id=5ded18fe&lang=true */ "./resources/js/components/forms/Tour/EditTour.vue?vue&type=template&id=5ded18fe&lang=true");
 /* harmony import */ var _EditTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditTour.vue?vue&type=script&lang=js */ "./resources/js/components/forms/Tour/EditTour.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditTour_vue_vue_type_template_id_5ded18fe_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/Tour/EditTour.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditTour_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditTour_vue_vue_type_template_id_5ded18fe_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/Tour/EditTour.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77883,13 +77908,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _BookingForm_vue_vue_type_template_id_6e15ba68_lang_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingForm.vue?vue&type=template&id=6e15ba68&lang=true */ "./resources/js/components/forms/booking/BookingForm.vue?vue&type=template&id=6e15ba68&lang=true");
 /* harmony import */ var _BookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingForm.vue?vue&type=script&lang=js */ "./resources/js/components/forms/booking/BookingForm.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingForm_vue_vue_type_template_id_6e15ba68_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/BookingForm.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingForm_vue_vue_type_template_id_6e15ba68_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/BookingForm.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77912,7 +77937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PassengersList_vue_vue_type_template_id_0bafa518_lang_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PassengersList.vue?vue&type=template&id=0bafa518&lang=true */ "./resources/js/components/forms/booking/PassengersList.vue?vue&type=template&id=0bafa518&lang=true");
 /* harmony import */ var _PassengersList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PassengersList.vue?vue&type=script&lang=js */ "./resources/js/components/forms/booking/PassengersList.vue?vue&type=script&lang=js");
 /* harmony import */ var _PassengersList_vue_vue_type_style_index_0_id_0bafa518_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PassengersList.vue?vue&type=style&index=0&id=0bafa518&lang=css */ "./resources/js/components/forms/booking/PassengersList.vue?vue&type=style&index=0&id=0bafa518&lang=css");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -77920,7 +77945,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PassengersList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PassengersList_vue_vue_type_template_id_0bafa518_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/PassengersList.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PassengersList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PassengersList_vue_vue_type_template_id_0bafa518_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/PassengersList.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77942,13 +77967,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Remove_vue_vue_type_template_id_3d83afd2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Remove.vue?vue&type=template&id=3d83afd2 */ "./resources/js/components/forms/booking/actions/Remove.vue?vue&type=template&id=3d83afd2");
 /* harmony import */ var _Remove_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Remove.vue?vue&type=script&lang=js */ "./resources/js/components/forms/booking/actions/Remove.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Remove_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Remove_vue_vue_type_template_id_3d83afd2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/actions/Remove.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Remove_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Remove_vue_vue_type_template_id_3d83afd2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/actions/Remove.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77970,13 +77995,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _edit_vue_vue_type_template_id_5557893d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=5557893d */ "./resources/js/components/forms/booking/actions/edit.vue?vue&type=template&id=5557893d");
 /* harmony import */ var _edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js */ "./resources/js/components/forms/booking/actions/edit.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_edit_vue_vue_type_template_id_5557893d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/actions/edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_edit_vue_vue_type_template_id_5557893d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/booking/actions/edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -77998,13 +78023,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AvailableDates_vue_vue_type_template_id_0c0d3c7c_lang_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AvailableDates.vue?vue&type=template&id=0c0d3c7c&lang=true */ "./resources/js/components/forms/date/AvailableDates.vue?vue&type=template&id=0c0d3c7c&lang=true");
 /* harmony import */ var _AvailableDates_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AvailableDates.vue?vue&type=script&lang=js */ "./resources/js/components/forms/date/AvailableDates.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AvailableDates_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AvailableDates_vue_vue_type_template_id_0c0d3c7c_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/date/AvailableDates.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AvailableDates_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AvailableDates_vue_vue_type_template_id_0c0d3c7c_lang_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/date/AvailableDates.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -78026,13 +78051,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DateList_vue_vue_type_template_id_6d08ff1c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DateList.vue?vue&type=template&id=6d08ff1c */ "./resources/js/components/forms/date/DateList.vue?vue&type=template&id=6d08ff1c");
 /* harmony import */ var _DateList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DateList.vue?vue&type=script&lang=js */ "./resources/js/components/forms/date/DateList.vue?vue&type=script&lang=js");
-/* harmony import */ var G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,G_wamp_www_bizmate_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DateList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DateList_vue_vue_type_template_id_6d08ff1c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/date/DateList.vue"]])
+const __exports__ = /*#__PURE__*/(0,G_wamp_www_bookingapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DateList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DateList_vue_vue_type_template_id_6d08ff1c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/forms/date/DateList.vue"]])
 /* hot reload */
 if (false) {}
 

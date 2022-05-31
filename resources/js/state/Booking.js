@@ -66,6 +66,15 @@ const Booking = createStore({
                         context.commit('setAvailableDates', res.data);
                     }
                 }).catch(err => {
+                    if (err && err.response && err.response.status == 404) {
+                        Swal.fire({
+                            title: "No dates available",
+                            text: "All the dates on this tour are disabled",
+                            icon: "warning"
+                        }).then(result => {
+                            router.push('/tour-list');
+                        });
+                    }
                     return Promise.reject(err);
                 })
         }

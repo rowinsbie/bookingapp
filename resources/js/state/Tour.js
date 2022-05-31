@@ -40,6 +40,14 @@ const Tour = createStore({
                         router.push('/tour-list');
                     });
                 }).catch(err => {
+
+                    if (err && err.response && err.response.status == 422) {
+                        Swal.fire({
+                            title: "Attention",
+                            text: "Please complete the form",
+                            icon: "warning"
+                        });
+                    }
                     return Promise.reject(err);
 
 
