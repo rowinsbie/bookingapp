@@ -46,10 +46,9 @@
                     class="img-responsive img-fluid"
                     width="400"
                 />
-                <h4>Hey there!</h4>
+                <h4>No result found!</h4>
                 <p>
-                    To view passengers, Please select a date in the tour
-                    available dates
+                   Please select a date on the available dates on the left side form
                 </p>
             </div>
         </div>
