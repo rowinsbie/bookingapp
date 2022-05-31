@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PassengerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::get('get-dates/{id}',[BookingController::class,'getAvailableDates']);
 Route::post('book-passenger',[BookingController::class,'BookingProcess']);
 Route::post('show-passengers',[BookingController::class,'ShowAllPassengers']);
 Route::post('remove-passenger',[BookingController::class,'Remove']);
+
+Route::post('update-passenger',[PassengerController::class,'update']);
+Route::get('passenger-info/{id}',[PassengerController::class,'index']);

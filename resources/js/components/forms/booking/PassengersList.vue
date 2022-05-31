@@ -31,7 +31,7 @@
                                 <td>{{ data.passenger.passport }}</td>
                                 <td>{{ data.passenger.birthdate }}</td>
                                 <td style="display:flex">
-       <router-link :to="{name:'EditPassenger',params:{id:3}}" class="btn btn-primary" >Edit</router-link>
+       <router-link :to="{name:'EditPassenger',params:{id:data.passenger.id}}" class="btn btn-primary" >Edit</router-link>
                                     <Remove :date="data.tour_booking.tour_date" :tourID="data.tour_booking.tour_id" :passengerID="data.passenger.id" />
                                 </td>
                             </tr>
@@ -72,4 +72,9 @@ export default {
     },
 };
 </script>
-<style lang=""></style>
+<style>
+ td,th
+ {
+     font-size:12px;
+ }
+</style>
