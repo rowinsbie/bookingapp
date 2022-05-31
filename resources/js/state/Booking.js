@@ -31,14 +31,13 @@ const Booking = createStore({
 
                     }
                 }).catch(err => {
-                    if(err && err.response && err.response.status == 422)
-                    {
+                    if (err && err.response && err.response.status == 422) {
                         Swal.fire({
-                            title:"Attention!",
-                            text:"Please fill out all the fields",
-                            icon:"warning"
+                            title: "Attention!",
+                            text: "Please fill out all the fields",
+                            icon: "warning"
                         });
-                        
+
                     }
                     return Promise.reject(err);
                 });
