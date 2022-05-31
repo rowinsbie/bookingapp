@@ -140,7 +140,13 @@ export default {
                     });
                 }
             }).catch(err => {
-                console.log(err);
+               if(err && err.response && err.response.status == 422)
+               {
+                   this.$toast.error("Please complete the form",{
+                       position:'bottom'
+                   });
+               }
+
             });
         }
     },

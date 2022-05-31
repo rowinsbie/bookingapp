@@ -23534,9 +23534,7 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     AddPassengers: function AddPassengers() {
-      _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("ADD_PASSENGER", {
-        data: this.Passenger
-      });
+      _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("ADD_PASSENGER", this.Passenger);
       this.emptyForm(this.Passenger.date);
       this.showPassengers();
     },
@@ -23698,6 +23696,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     Update: function Update() {
+      var _this = this;
+
       axios.post('../api/update-passenger', this.PassengerInfo).then(function (res) {
         if (res && res.data) {
           Swal.fire({
@@ -23709,7 +23709,11 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       })["catch"](function (err) {
-        console.log(err);
+        if (err && err.response && err.response.status == 422) {
+          _this.$toast.error("Please complete the form", {
+            position: 'bottom'
+          });
+        }
       });
     }
   },

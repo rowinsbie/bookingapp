@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Passenger;
+
+use App\Http\Requests\PassengerRequest;
+
 class PassengerController extends Controller
 {
     public function index(Request $request)
@@ -12,7 +15,7 @@ class PassengerController extends Controller
         return Passenger::find($id);
     }
 
-    public function update(Request $request)
+    public function update(PassengerRequest $request)
     {
         $isUpdated = Passenger::find($request['id'])
         ->update([
@@ -20,7 +23,8 @@ class PassengerController extends Controller
             'surname'=>$request['surname'],
             'email'=>$request['email'],
             'mobile'=>$request['mobile'],
-            'passport'=>$request['passport']
+            'passport'=>$request['passport'],
+            'birthdate'=>date('Y-m-d',strtotime($request['birthdate'])),
         ]);
 
         return $request->all();

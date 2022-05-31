@@ -173,9 +173,7 @@ export default {
             }
         },
         AddPassengers() {
-            Booking.dispatch("ADD_PASSENGER", {
-                data:this.Passenger
-            });
+            Booking.dispatch("ADD_PASSENGER",this.Passenger);
 
           
              this.emptyForm(this.Passenger.date);

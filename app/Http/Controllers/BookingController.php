@@ -7,6 +7,7 @@ use App\Models\TourDate;
 use App\Models\Passenger;
 use App\Models\TourBooking as Booking;
 use App\Models\TourBookingPassenger;
+use App\Http\Requests\BookPassengerRequest;
 
 class BookingController extends Controller
 {
@@ -22,7 +23,7 @@ class BookingController extends Controller
         return Response()->json($tourDates->get());
     }
 
-    public function BookingProcess(Request $request)
+    public function BookingProcess(BookPassengerRequest $request)
     {
         $Passenger = $this->savePassengerInformation($request);
         if($Passenger)
