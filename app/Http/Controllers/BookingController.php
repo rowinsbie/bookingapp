@@ -28,8 +28,8 @@ class BookingController extends Controller
         $Passenger = $this->savePassengerInformation($request);
         if($Passenger)
         {
-            $Booking = Booking::where('tour_id',$request['data']['tourID'])
-            ->where('tour_date',$request['data']['date'])->first();
+            $Booking = Booking::where('tour_id',$request['tourID'])
+            ->where('tour_date',$request['date'])->first();
             if($Booking)
             {
                 $this->BookPassenger($request,$Passenger->id,$Booking->id);
@@ -41,7 +41,7 @@ class BookingController extends Controller
 
     private function savePassengerInformation(Request $request)
     {
-        $input = $request['data'];
+        $input = $request;
         $isCreated = Passenger::create([
             'given_name'=>$input['given_name'],
             'surname'=>$input['surname'],
@@ -66,7 +66,7 @@ class BookingController extends Controller
         $isPassengerHasBeenBooked = TourBookingPassenger::create([
             'booking_id'=>$BookingID,
             'passenger_id'=>$PassengerID,
-            'special_request'=> $request['data']['Request']
+            'special_request'=> $request['Request']
         ]);
     }
 

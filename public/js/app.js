@@ -25268,6 +25268,14 @@ var Booking = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
         if (res && res.status == 200) {// context.commit('setPassenger', res.data);
         }
       })["catch"](function (err) {
+        if (err && err.response && err.response.status == 422) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+            title: "Attention!",
+            text: "Please fill out all the fields",
+            icon: "warning"
+          });
+        }
+
         return Promise.reject(err);
       });
     },
