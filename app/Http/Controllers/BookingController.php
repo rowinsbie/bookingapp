@@ -59,26 +59,13 @@ class BookingController extends Controller
     }
 
 
-    public function createBooking(Request $request)
-    {
-        $input = $request['data'];
-        $isBooked = Booking::create([
-            'tour_id'=>$input['tourID'],
-            'tour_date'=>$input['date'],
-            'status_id'=>1
-        ]);
-        if($isBooked)
-        {
-            return $isBooked;
-        }
-    }
 
     private function BookPassenger($request,$PassengerID,$BookingID)
     {
         $isPassengerHasBeenBooked = TourBookingPassenger::create([
             'booking_id'=>$BookingID,
             'passenger_id'=>$PassengerID,
-            'special_request'=> $request['data']['Request'] || ''
+            'special_request'=> $request['data']['Request']
         ]);
     }
 

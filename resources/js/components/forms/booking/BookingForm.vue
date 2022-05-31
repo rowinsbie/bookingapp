@@ -154,6 +154,9 @@ export default {
     },
     mounted() {
         Booking.dispatch("GET_DATES", this.Passenger.tourID);
+          Booking.dispatch("SHOW_PASSENGERS", {
+                
+             });
     },
     methods: {
         emptyForm(date)

@@ -23518,6 +23518,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("GET_DATES", this.Passenger.tourID);
+    _state_Booking__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("SHOW_PASSENGERS", {});
   },
   methods: {
     emptyForm: function emptyForm(date) {

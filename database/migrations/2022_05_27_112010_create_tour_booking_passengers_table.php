@@ -22,7 +22,7 @@ return new class extends Migration
 
             // $table->foreignId('booking_id')->constrained('tour_bookings').onDelete('cascade');
             // $table->foreignId('passenger_id')->constrained('passengers').onDelete('cascade');
-            $table->text('special_request',255);
+            $table->text('special_request',255)->nullable();
             $table->timestamps();
         });
     }
