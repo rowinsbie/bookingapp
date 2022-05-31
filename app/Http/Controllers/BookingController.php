@@ -88,7 +88,7 @@ class BookingController extends Controller
         ->whereHas('TourBooking',function($q) use ($date,$tourID)
         {
             $q->where('tour_date',$date);
-            // $q->where('tour_id',$tourID);
+            $q->where('tour_id',$tourID);
         })
         ->get();
         return $Passengers;

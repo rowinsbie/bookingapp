@@ -44,7 +44,7 @@ const Booking = createStore({
         },
 
         SHOW_PASSENGERS(context, data) {
-
+            console.log("TOUR ID: " + data.tourID);
             axios.post(`../api/show-passengers/`, {
                     date: data.date,
                     tourID: data.tourID

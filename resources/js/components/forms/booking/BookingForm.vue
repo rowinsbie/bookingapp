@@ -4,7 +4,6 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Passenger's Booking </h4>
-                    <h6>Tour Name</h6>
                     <hr />
                     <form action="">
                         <div class="form-group">
