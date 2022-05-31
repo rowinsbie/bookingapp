@@ -31,12 +31,7 @@
                                 <td>{{ data.passenger.passport }}</td>
                                 <td>{{ data.passenger.birthdate }}</td>
                                 <td style="display:flex">
-                                    <button
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Edit
-                                    </button>
+       <router-link :to="{name:'EditPassenger',params:{id:3}}" class="btn btn-primary" >Edit</router-link>
                                     <Remove :date="data.tour_booking.tour_date" :tourID="data.tour_booking.tour_id" :passengerID="data.passenger.id" />
                                 </td>
                             </tr>
@@ -63,9 +58,11 @@
 <script>
 import Booking from "../../../state/Booking";
 import Remove from '../booking/actions/Remove';
+import Edit from '../booking/actions/edit';
 export default {
     components:{
-        Remove
+        Remove,
+        Edit
     },
     mounted() {},
     computed: {

@@ -5,6 +5,7 @@ import TourList from './components/TourList';
 import createTour from './components/forms/CreateTour';
 import EditTour from './components/forms/Tour/EditTour';
 import BookingForm from './components/forms/booking/BookingForm';
+import EditPassenger from './components/forms/booking/actions/edit';
 const routes = [{
         path: '/',
         name: "BookingList",
@@ -29,6 +30,11 @@ const routes = [{
         path: '/booking/:id',
         name: 'booking',
         component: BookingForm
+    },
+    {
+        path: '/edit-passenger/:id',
+        name: 'EditPassenger',
+        component: EditPassenger
     }
 ];
 
