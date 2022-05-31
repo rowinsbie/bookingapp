@@ -10,9 +10,9 @@
     </div>
 </template>
 <script>
-
+import Booking from '../../../../state/Booking';
 export default {
-    props: ["passengerID","tourID"],
+    props: ["passengerID","tourID","date"],
     setup() {},
     methods: {
         confirmation() {
@@ -38,7 +38,10 @@ export default {
                 .then((res) => {
                     Swal.fire("Removed!", "", "success");
 
-                    console.log(res);
+                     Booking.dispatch("SHOW_PASSENGERS", {
+                 tourID:this.tourID,
+                 date:this.date
+             });
                 })
                 .catch((err) => {
                     console.log(err);

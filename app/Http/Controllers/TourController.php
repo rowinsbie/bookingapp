@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TourRequest;
 use App\Models\Tour;
 use App\Models\TourDate;
+use App\Models\TourBooking as Booking;
 
 class TourController extends Controller
 {
@@ -26,7 +27,21 @@ class TourController extends Controller
                     'status_id'=>1
                 ]);
             }
+            $this->makeTourBooking($CreateTour->id);
         } 
+    }
+
+    private function makeTourBooking($tourID)
+    {
+        foreach(TourDate::where('tour_id',$tourID)->get() as $date)
+        {
+            $isBooked = Booking::create([
+                'tour_id'=>$tourID,
+                'tour_date'=>$date->date,
+                'status_id'=>1
+            ]);
+        }
+        
     }
 
 

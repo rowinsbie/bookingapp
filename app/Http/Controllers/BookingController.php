@@ -13,7 +13,7 @@ class BookingController extends Controller
     
     public function getAvailableDates($id)
     {
-        $tourDates = TourDate::where('tour_id',$id);
+        $tourDates = Booking::where('tour_id',$id);
         if(!$tourDates->exists())
         {
             abort(404);
@@ -27,7 +27,8 @@ class BookingController extends Controller
         $Passenger = $this->savePassengerInformation($request);
         if($Passenger)
         {
-            $Booking = $this->createBooking($request);
+            $Booking = Booking::where('tour_id',$request['data']['tourID'])
+            ->where('tour_date',$request['data']['date'])->first();
             if($Booking)
             {
                 $this->BookPassenger($request,$Passenger->id,$Booking->id);

@@ -15,7 +15,7 @@
                                     v-for="(date, index) in showDates"
                                     
                                 >
-                                    {{ date.date }}
+                                    {{ date.tour_date }}
                                 </option>
                             </select>
                         </div>

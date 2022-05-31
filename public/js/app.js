@@ -23595,8 +23595,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _state_Booking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../state/Booking */ "./resources/js/state/Booking.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["passengerID", "tourID"],
+  props: ["passengerID", "tourID", "date"],
   setup: function setup() {},
   methods: {
     confirmation: function confirmation() {
@@ -23615,12 +23617,17 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     RemovePassenger: function RemovePassenger() {
+      var _this2 = this;
+
       axios.post("../api/remove-passenger", {
         tourID: this.tourID,
         passengerID: this.passengerID
       }).then(function (res) {
         Swal.fire("Removed!", "", "success");
-        console.log(res);
+        _state_Booking__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch("SHOW_PASSENGERS", {
+          tourID: _this2.tourID,
+          date: _this2.date
+        });
       })["catch"](function (err) {
         console.log(err);
         return Promise.reject(err);
@@ -24433,7 +24440,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "date",
     "class": "form-control"
   }, [_hoisted_11, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.showDates, function (date, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date.date), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date.tour_date), 1
     /* TEXT */
     );
   }), 256
@@ -24630,11 +24637,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.passenger.birthdate), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Remove, {
+      date: data.tour_booking.tour_date,
       tourID: data.tour_booking.tour_id,
       passengerID: data.passenger.id
     }, null, 8
     /* PROPS */
-    , ["tourID", "passengerID"])])], 8
+    , ["date", "tourID", "passengerID"])])], 8
     /* PROPS */
     , _hoisted_10);
   }), 256

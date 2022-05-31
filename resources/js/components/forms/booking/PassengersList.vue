@@ -37,7 +37,7 @@
                                     >
                                         Edit
                                     </button>
-                                    <Remove :tourID="data.tour_booking.tour_id" :passengerID="data.passenger.id" />
+                                    <Remove :date="data.tour_booking.tour_date" :tourID="data.tour_booking.tour_id" :passengerID="data.passenger.id" />
                                 </td>
                             </tr>
                         </tbody>
