@@ -27,7 +27,7 @@ const Booking = createStore({
             axios.post('../api/book-passenger', data)
                 .then(res => {
                     if (res && res.status == 200) {
-                        context.commit('setPassenger', res.data);
+                        // context.commit('setPassenger', res.data);
 
                     }
                 }).catch(err => {

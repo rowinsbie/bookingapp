@@ -156,12 +156,27 @@ export default {
         Booking.dispatch("GET_DATES", this.Passenger.tourID);
     },
     methods: {
+        emptyForm(date)
+        {
+            this.Passenger = {
+                date:date,
+                given_name:"",
+                surname:"",
+                email:"",
+                mobile:"",
+                passport:"",
+                Request:"",
+                birthDate:""
+            }
+        },
         AddPassengers() {
             Booking.dispatch("ADD_PASSENGER", {
                 data:this.Passenger
             });
 
-            // this.showPassengers();
+          
+             this.emptyForm(this.Passenger.date);
+             this.showPassengers();
            
         },
 

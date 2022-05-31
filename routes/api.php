@@ -31,3 +31,4 @@ Route::post('update-tour',[TourController::class,'UpdateTourInformation']);
 Route::get('get-dates/{id}',[BookingController::class,'getAvailableDates']);
 Route::post('book-passenger',[BookingController::class,'BookingProcess']);
 Route::post('show-passengers',[BookingController::class,'ShowAllPassengers']);
+Route::post('remove-passenger',[BookingController::class,'Remove']);

@@ -96,4 +96,10 @@ class BookingController extends Controller
         return $Passengers;
     }
 
+    public function Remove(Request $request)
+    {
+        $removePassenger = Passenger::find($request['passengerID'])->delete();
+        $removePassengerBooking = TourBookingPassenger::where('passenger_id',$request['passengerID'])->delete();
+    }
+
 }
