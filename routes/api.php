@@ -28,6 +28,7 @@ Route::post('booking-date-status-update',[TourController::class,'UpdateDateStatu
 Route::post('update-tour',[TourController::class,'UpdateTourInformation']);
 
 
+Route::get('all-booking',[BookingController::class,'index']);
 
 Route::get('get-dates/{id}',[BookingController::class,'getAvailableDates']);
 Route::post('book-passenger',[BookingController::class,'BookingProcess']);

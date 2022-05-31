@@ -8,13 +8,22 @@ use App\Models\Passenger;
 use App\Models\TourBooking as Booking;
 use App\Models\TourBookingPassenger;
 use App\Http\Requests\BookPassengerRequest;
-
 class BookingController extends Controller
 {
+
+    public function index()
+    {
+        return TourDate::with(['Tour','Tour.Booking.PassengerBooking'])->get();
+    }
     
     public function getAvailableDates($id)
     {
-        $tourDates = Booking::where('tour_id',$id);
+        $tourDates = Booking::with('Tour.TourDate')
+        ->where('tour_id',$id)
+        ->whereHas('Tour.TourDate',function($q)
+        {
+            $q->where('status_id',1);
+        });
         if(!$tourDates->exists())
         {
             abort(404);

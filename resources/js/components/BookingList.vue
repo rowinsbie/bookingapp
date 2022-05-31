@@ -23,6 +23,18 @@
                                     <th>Actions</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    <tr v-for="(value,index) in publicBooking" :key="index">
+                                        <td>{{value.id}}</td>
+                                        <td>{{value.tour.name}}</td>
+                                        <td>{{value.date}}</td>
+                                        <td>{{value.tour.booking[value.tour.booking.length - 1].passenger_booking.length}}</td>
+                                        <td>
+                                           <!-- <router-link :to="{name:'editTour',params:{id:value.tour.id}}" class="btn btn-primary">Edit</router-link> -->
+                                           <router-link :to="{name:'booking',params:{id:value.tour.id}}" class="btn border m-2">Booking</router-link>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             
                     </table>
                 </div>
@@ -32,9 +44,35 @@
 </template>
 <script>
 export default {
-  
+  data()
+  {
+      return {
+          publicBooking:[]
+      }
+  },
+  methods:{
+      countPassenger(data)
+      {
+          data.passenger_booking.forEach(function(info) 
+          {
+              alert(info.length);
+              return info.length;
+          });
+      }
+  },
     mounted()
     {
+
+        axios.get('api/all-booking')
+        .then(res => {
+            console.log(res);
+            if(res && res.status)
+            {
+                this.publicBooking = res.data;
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 }
 </script>
